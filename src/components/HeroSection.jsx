@@ -12,7 +12,8 @@ const HeroSection = () => {
     const contentOverlayRef = useRef(null);
     const logoRef = useRef(null);
     const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
+    const subtitleRef1 = useRef(null);
+    const subtitleRef2 = useRef(null);
     const door1Ref = useRef(null);
     const door2Ref = useRef(null);
     const door3Ref = useRef(null);
@@ -34,7 +35,7 @@ const HeroSection = () => {
             height: 200
         });
 
-        gsap.set([titleRef.current, subtitleRef.current], {
+        gsap.set([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
             opacity: 0
         });
 
@@ -106,11 +107,16 @@ const HeroSection = () => {
             duration: 0.8,
             ease: 'power2.out'
         }, 0.3)
-        .to(subtitleRef.current, {
+        .to(subtitleRef1.current, {
             opacity: 0.9,
             duration: 0.8,
             ease: 'power2.out'
         }, 1.2)
+        .to(subtitleRef2.current, {
+            opacity: 0.9,
+            duration: 0.8,
+            ease: 'power2.out'
+        }, 1.4)
         
         // 滚动提示淡出
         .to(scrollHintRef.current, {
@@ -170,8 +176,8 @@ const HeroSection = () => {
                         <img src={IMAGES.tokyoLogo} alt="Tokyo Logo" className="w-full h-full object-cover" />
                     </div>
                     <h1 className="text-6xl font-bold tracking-widest mb-5 text-shadow-lg" ref={titleRef}>TOKYO JAPANESE CUISINE</h1>
-                    <p className="text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef}>精致美食·品越服务</p>
-                    <p className="text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef}>成就世界级日料品牌</p>
+                    <p className="text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef1}>精致美食·品越服务</p>
+                    <p className="text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef2}>成就世界级日料品牌</p>
                 </div>
 
                 {/* 四个门 */}
@@ -187,7 +193,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* 滚动提示 */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
+                <div className="absolute bottom-8 left-1/3 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
                     <div className="w-6 h-9 border-2 border-gray-900 rounded-xl mx-auto mb-2 relative">
                         <div className="absolute top-1.5 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-900 rounded-sm animate-scroll"></div>
                     </div>
