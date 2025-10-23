@@ -193,7 +193,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* 滚动提示 */}
-                <div className="absolute bottom-8 left-1/3 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
                     <div className="w-6 h-9 border-2 border-gray-900 rounded-xl mx-auto mb-2 relative">
                         <div className="absolute top-1.5 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-900 rounded-sm animate-scroll"></div>
                     </div>
