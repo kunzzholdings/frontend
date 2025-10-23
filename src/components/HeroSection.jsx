@@ -44,7 +44,7 @@ const HeroSection = () => {
                 trigger: '.scroll-container',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1
+                scrub: 2
             }
         });
 
@@ -52,23 +52,23 @@ const HeroSection = () => {
         tl.to(door2Ref.current, {
             x: '-100%',
             scale: 1.3,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.inOut'
         }, 0)
         .to(door3Ref.current, {
             x: '100%',
             scale: 1.3,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.inOut'
         }, 0)
         .to(door1Ref.current, {
             scale: 1.3,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.inOut'
         }, 0)
         .to(door4Ref.current, {
             scale: 1.3,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.inOut'
         }, 0)
         
@@ -76,12 +76,12 @@ const HeroSection = () => {
         .to(backgroundRef.current, {
             opacity: 1,
             scale: 1.4,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.out'
         }, 0)
         .to(restaurantImageRef.current, {
             scale: 1.3,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.out'
         }, 0)
         
@@ -89,23 +89,23 @@ const HeroSection = () => {
         .to(logoRef.current, {
             width: 120,
             height: 120,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.out'
         }, 0)
         
         // 整体内容放大
         .to(contentOverlayRef.current, {
             scale: 1.15,
-            duration: 1.5,
+            duration: 2.5,
             ease: 'power2.out'
-        }, 0.2)
+        }, 0.5)
         
         // 标题和副标题同时渐显
         .to([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
             opacity: 1,
-            duration: 0.8,
+            duration: 1.2,
             ease: 'power2.out'
-        }, 0.3)
+        }, 1.0)
         
 
         // 鼠标视差效果
