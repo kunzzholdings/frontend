@@ -101,22 +101,12 @@ const HeroSection = () => {
             ease: 'power2.out'
         }, 0.2)
         
-        // 标题渐显
-        .to(titleRef.current, {
+        // 标题和副标题同时渐显
+        .to([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
             opacity: 1,
             duration: 0.8,
             ease: 'power2.out'
         }, 0.3)
-        .to(subtitleRef1.current, {
-            opacity: 0.9,
-            duration: 0.8,
-            ease: 'power2.out'
-        }, 1.2)
-        .to(subtitleRef2.current, {
-            opacity: 0.9,
-            duration: 0.8,
-            ease: 'power2.out'
-        }, 1.4)
         
         // 滚动提示淡出
         .to(scrollHintRef.current, {
