@@ -9,7 +9,7 @@ export default function Home() {
 
       <div className="relative flex place-items-center">
         <h1 className="text-6xl font-bold text-center">
-          学习 <span className="text-blue-600">Next.js</span>!!!
+          学习 <span className="text-blue-600">Next.js!!</span>!!!
         </h1>
       </div>
 
