@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
     const aboutContainerRef = useRef(null);
-    const aboutImageRef = useRef(null);
 
     useEffect(() => {
         gsap.to(aboutContainerRef.current, {
@@ -21,33 +20,15 @@ const AboutSection = () => {
                 toggleActions: 'play none none none'
             }
         });
-
-        gsap.to(aboutImageRef.current, {
-            x: 0,
-            opacity: 1,
-            duration: 1.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.about-section',
-                start: 'top 50%',
-                toggleActions: 'play none none none'
-            }
-        });
     }, []);
 
     return (
-        <div className="relative min-h-screen bg-white overflow-hidden flex items-center z-[100] mt-[150vh]">
-            <div className="w-full h-screen flex items-center opacity-0" ref={aboutContainerRef}>
-                {/* 左侧图片 */}
-                <div className="flex-1 h-screen relative -translate-x-full opacity-0 overflow-hidden" ref={aboutImageRef}>
-                    <img src={IMAGES.chef} alt="日本料理制作" className="w-full h-full object-cover" />
-                    <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-r from-transparent to-white z-10"></div>
-                </div>
-
-                {/* 右侧内容 */}
-                <div className="flex-1 relative text-left py-20 px-16 h-screen flex flex-col justify-center z-20 bg-white">
+        <div className="relative min-h-screen overflow-hidden z-[100] mt-[150vh]">
+            <div className="w-full h-screen flex items-center justify-center opacity-0" ref={aboutContainerRef}>
+                {/* 内容区域 */}
+                <div className="relative text-center py-20 px-16 h-screen flex flex-col justify-center z-20 max-w-4xl">
                     <h2 className="text-6xl font-bold text-black mb-8 relative inline-block tracking-wider">关于我们</h2>
-                    <p className="text-lg leading-relaxed text-gray-800 text-left max-w-2xl">
+                    <p className="text-lg leading-relaxed text-gray-800 text-left max-w-2xl mx-auto">
                         我们是一家致力于提供精致料理与品越服务的日式料理餐厅。以极致的匠心打造美食。严选当季新鲜食材,融合传统与创意,呈现日本料理美。
                         餐厅环境清雅舒适,充满日式格调。宾客在此不仅能品味精妙料理,更能感受到细致入微的服务与文化魅力。我们立志将每一次用餐变成难忘的美食之旅,
                         以品越的服务和精致的料理成为世界级日料品牌。
@@ -55,11 +36,8 @@ const AboutSection = () => {
                 </div>
             </div>
 
-            {/* 樱花装饰 */}
-            <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none z-20 opacity-90">
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-full bg-no-repeat bg-contain bg-right-center" 
-                     style={{backgroundImage: `url('${IMAGES.blossom}')`}}></div>
-                {/* 樱花花瓣 - 屏幕右半部分随机飘落 */}
+            {/* 樱花花瓣 - 屏幕右半部分飘落 */}
+            <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none z-10">
                 <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/4 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '8s', animationDelay: '0s'}}></div>
                 <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/3 top-0" 
