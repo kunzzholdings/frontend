@@ -20,7 +20,6 @@ const HeroSection = () => {
     const door4Ref = useRef(null);
     const backgroundRef = useRef(null);
     const restaurantImageRef = useRef(null);
-    const scrollHintRef = useRef(null);
 
     useEffect(() => {
         // 设置初始状态
@@ -108,12 +107,6 @@ const HeroSection = () => {
             ease: 'power2.out'
         }, 0.3)
         
-        // 滚动提示淡出
-        .to(scrollHintRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power2.in'
-        }, 2.0);
 
         // 鼠标视差效果
         const handleMouseMove = (e) => {
@@ -182,13 +175,6 @@ const HeroSection = () => {
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door4Ref}></div>
                 </div>
 
-                {/* 滚动提示 */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
-                    <div className="w-6 h-9 border-2 border-gray-900 rounded-xl mx-auto mb-2 relative">
-                        <div className="absolute top-1.5 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-900 rounded-sm animate-scroll"></div>
-                    </div>
-                    向下滚动
-                </div>
             </div>
         </div>
     );
