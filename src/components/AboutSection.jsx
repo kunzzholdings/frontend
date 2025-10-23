@@ -23,7 +23,7 @@ const AboutSection = () => {
     }, []);
 
     return (
-        <div className="relative min-h-screen overflow-hidden z-[100] mt-[150vh]">
+        <div className="relative min-h-screen overflow-hidden z-10 mt-[150vh]">
             <div className="w-full h-screen flex items-center justify-end opacity-0" ref={aboutContainerRef}>
                 {/* 内容区域 - 右半侧 */}
                 <div className="relative text-center py-20 px-16 h-screen flex flex-col justify-center z-20 max-w-2xl w-1/2">

@@ -30,7 +30,7 @@ const ValuesSection = () => {
     ];
 
     return (
-        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center py-16 px-5 overflow-hidden"
+        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center py-16 px-5 overflow-hidden z-10"
              style={{backgroundImage: `url('/assets/images/vision.png')`}}>
             {/* 遮罩层 */}
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-10 pointer-events-none"></div>
