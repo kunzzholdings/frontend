@@ -56,26 +56,36 @@ const AboutSection = () => {
             </div>
 
             {/* 樱花装饰 */}
-            <div className="absolute right-0 top-0 w-80 h-full pointer-events-none z-20 opacity-90">
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-full h-3/4 bg-no-repeat bg-contain bg-right-center" 
+            <div className="absolute right-0 top-0 w-full h-full pointer-events-none z-20 opacity-90">
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-full bg-no-repeat bg-contain bg-right-center" 
                      style={{backgroundImage: `url('${IMAGES.blossom}')`}}></div>
-                {/* 樱花花瓣 */}
-                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-1/4" 
+                {/* 樱花花瓣 - 整个右侧随机飘落 */}
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '8s', animationDelay: '0s'}}></div>
-                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-32 top-1/3" 
+                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-32 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[1]}')`, animationDuration: '10s', animationDelay: '1s'}}></div>
-                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-16 top-1/2" 
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-16 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[2]}')`, animationDuration: '9s', animationDelay: '2s'}}></div>
-                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-24 top-2/3" 
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-24 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[3]}')`, animationDuration: '11s', animationDelay: '0.5s'}}></div>
-                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-28 top-3/4" 
+                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-28 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[4]}')`, animationDuration: '8.5s', animationDelay: '1.5s'}}></div>
-                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-12 top-1/5" 
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-12 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[5]}')`, animationDuration: '10.5s', animationDelay: '2.5s'}}></div>
-                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-36 top-1/6" 
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-36 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[6]}')`, animationDuration: '9.5s', animationDelay: '0.8s'}}></div>
-                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-4/5" 
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[7]}')`, animationDuration: '11.5s', animationDelay: '1.8s'}}></div>
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-40 top-0" 
+                     style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '12s', animationDelay: '3s'}}></div>
+                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-44 top-0" 
+                     style={{backgroundImage: `url('${IMAGES.petals[1]}')`, animationDuration: '7s', animationDelay: '1.2s'}}></div>
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-8 top-0" 
+                     style={{backgroundImage: `url('${IMAGES.petals[2]}')`, animationDuration: '13s', animationDelay: '2.8s'}}></div>
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-48 top-0" 
+                     style={{backgroundImage: `url('${IMAGES.petals[3]}')`, animationDuration: '9.5s', animationDelay: '0.3s'}}></div>
+                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-52 top-0" 
+                     style={{backgroundImage: `url('${IMAGES.petals[4]}')`, animationDuration: '11.2s', animationDelay: '1.7s'}}></div>
             </div>
         </div>
     );
