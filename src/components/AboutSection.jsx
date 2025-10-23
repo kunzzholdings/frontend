@@ -56,35 +56,35 @@ const AboutSection = () => {
             </div>
 
             {/* 樱花装饰 */}
-            <div className="absolute right-0 top-0 w-full h-full pointer-events-none z-20 opacity-90">
+            <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none z-20 opacity-90">
                 <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-full bg-no-repeat bg-contain bg-right-center" 
                      style={{backgroundImage: `url('${IMAGES.blossom}')`}}></div>
-                {/* 樱花花瓣 - 整个右侧随机飘落 */}
-                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-0" 
+                {/* 樱花花瓣 - 屏幕右半部分随机飘落 */}
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/4 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '8s', animationDelay: '0s'}}></div>
-                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-32 top-0" 
+                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/3 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[1]}')`, animationDuration: '10s', animationDelay: '1s'}}></div>
-                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-16 top-0" 
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/6 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[2]}')`, animationDuration: '9s', animationDelay: '2s'}}></div>
-                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-24 top-0" 
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-2/5 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[3]}')`, animationDuration: '11s', animationDelay: '0.5s'}}></div>
-                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-28 top-0" 
+                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-3/5 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[4]}')`, animationDuration: '8.5s', animationDelay: '1.5s'}}></div>
-                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-12 top-0" 
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/5 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[5]}')`, animationDuration: '10.5s', animationDelay: '2.5s'}}></div>
-                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-36 top-0" 
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-4/5 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[6]}')`, animationDuration: '9.5s', animationDelay: '0.8s'}}></div>
-                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-20 top-0" 
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/2 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[7]}')`, animationDuration: '11.5s', animationDelay: '1.8s'}}></div>
-                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-40 top-0" 
+                <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-2/3 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '12s', animationDelay: '3s'}}></div>
-                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-44 top-0" 
+                <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-3/4 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[1]}')`, animationDuration: '7s', animationDelay: '1.2s'}}></div>
-                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-8 top-0" 
+                <div className="absolute w-7 h-7 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/8 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[2]}')`, animationDuration: '13s', animationDelay: '2.8s'}}></div>
-                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-48 top-0" 
+                <div className="absolute w-9 h-9 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-5/6 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[3]}')`, animationDuration: '9.5s', animationDelay: '0.3s'}}></div>
-                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 right-52 top-0" 
+                <div className="absolute w-6 h-6 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-7/8 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[4]}')`, animationDuration: '11.2s', animationDelay: '1.7s'}}></div>
             </div>
         </div>
