@@ -34,11 +34,7 @@ const HeroSection = () => {
             height: 200
         });
 
-        gsap.set([titleRef.current], {
-            opacity: 0
-        });
-
-        gsap.set(subtitleRef.current, {
+        gsap.set([titleRef.current, subtitleRef.current], {
             opacity: 0
         });
 
@@ -114,7 +110,7 @@ const HeroSection = () => {
             opacity: 0.9,
             duration: 0.8,
             ease: 'power2.out'
-        }, 1.6)
+        }, 1.2)
         
         // 滚动提示淡出
         .to(scrollHintRef.current, {
@@ -191,7 +187,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* 滚动提示 */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-900 text-sm tracking-wider z-[26] animate-bounce-slow" ref={scrollHintRef}>
                     <div className="w-6 h-9 border-2 border-gray-900 rounded-xl mx-auto mb-2 relative">
                         <div className="absolute top-1.5 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-gray-900 rounded-sm animate-scroll"></div>
                     </div>
