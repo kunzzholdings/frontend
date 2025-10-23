@@ -172,13 +172,13 @@ const HeroSection = () => {
 
                 {/* 四个门 */}
                 <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
-                    <div className="absolute top-0 left-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center" 
+                    <div className="absolute top-0 left-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-20" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door1Ref}></div>
-                    <div className="absolute top-0 left-1/4 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center" 
+                    <div className="absolute top-0 left-1/4 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-10" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door2Ref}></div>
-                    <div className="absolute top-0 left-1/2 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center" 
+                    <div className="absolute top-0 left-1/2 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-10" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door3Ref}></div>
-                    <div className="absolute top-0 right-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center" 
+                    <div className="absolute top-0 right-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-20" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door4Ref}></div>
                 </div>
 
