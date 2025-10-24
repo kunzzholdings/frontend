@@ -3,7 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { IMAGES } from '../config/images';
+import { IMAGES } from '../../config/images';
+import '@/styles/animations.css';
+import '@/styles/layout.css';
+import '@/styles/theme.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,9 +155,9 @@ const HeroSection = () => {
 
     return (
         <div className="h-[200vh] relative">
-            <div className="h-screen fixed top-0 left-0 w-full overflow-hidden z-10" ref={sceneRef}>
+            <div className="h-screen fixed-fullscreen overflow-hidden z-overlay" ref={sceneRef}>
                 {/* 背景内容 */}
-                <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center opacity-50 scale-100" ref={backgroundRef}>
+                <div className="absolute top-0 left-0 w-full h-full flex-center opacity-50 scale-100" ref={backgroundRef}>
                     <img 
                         src={IMAGES.tokyoRestaurant} 
                         alt="Japanese Restaurant" 
@@ -164,8 +167,8 @@ const HeroSection = () => {
                 </div>
 
                 {/* Logo和标题 */}
-                <div className="absolute top-1/2 left-1/2 text-center text-white z-[25] opacity-100" ref={contentOverlayRef}>
-                    <div className="w-32 h-32 bg-tokyo-gold rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl overflow-hidden" ref={logoRef}>
+                <div className="absolute-center text-center text-white z-modal opacity-100" ref={contentOverlayRef}>
+                    <div className="w-32 h-32 bg-tokyo-gold rounded-full mx-auto mb-8 flex-center shadow-2xl overflow-hidden" ref={logoRef}>
                         <img src={IMAGES.tokyoLogo} alt="Tokyo Logo" className="w-full h-full object-cover" />
                     </div>
                     <h1 className="text-6xl font-bold tracking-widest mb-5 text-shadow-lg" ref={titleRef}>TOKYO JAPANESE CUISINE</h1>
@@ -174,14 +177,14 @@ const HeroSection = () => {
                 </div>
 
                 {/* 四个门 */}
-                <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
-                    <div className="absolute top-0 left-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-20" 
+                <div className="absolute top-0 left-0 w-full h-full z-overlay pointer-events-none">
+                    <div className="absolute top-0 left-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-modal" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door1Ref}></div>
-                    <div className="absolute top-0 left-1/4 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-10" 
+                    <div className="absolute top-0 left-1/4 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-overlay" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door2Ref}></div>
-                    <div className="absolute top-0 left-1/2 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-10" 
+                    <div className="absolute top-0 left-1/2 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-overlay" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door3Ref}></div>
-                    <div className="absolute top-0 right-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-20" 
+                    <div className="absolute top-0 right-0 w-1/4 h-full bg-cover bg-center overflow-hidden shadow-inner origin-center z-modal" 
                          style={{backgroundImage: `url('${IMAGES.shoji}')`}} ref={door4Ref}></div>
                 </div>
 

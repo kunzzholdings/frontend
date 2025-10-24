@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import { IMAGES } from '../config/images';
+import { IMAGES } from '../../config/images';
+import '@/styles/animations.css';
+import '@/styles/layout.css';
+import '@/styles/theme.css';
 
 const ValuesSection = () => {
     const [activeCard, setActiveCard] = useState(null);
@@ -30,18 +33,18 @@ const ValuesSection = () => {
     ];
 
     return (
-        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center py-16 px-5 overflow-hidden z-10"
+        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex-center py-16 px-5 overflow-hidden z-base"
              style={{backgroundImage: `url('/assets/images/vision.png')`}}>
             {/* 遮罩层 */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-10 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-base pointer-events-none"></div>
             
-            <div className={`relative z-20 flex flex-row items-center justify-center gap-5 transition-all duration-700 ${activeCard !== null ? 'has-active' : ''}`}>
+            <div className={`relative z-overlay flex flex-row items-center justify-center gap-5 transition-all duration-700 ${activeCard !== null ? 'has-active' : ''}`}>
                 {values.map((value, index) => (
                     <div 
                         key={index}
-                        className={`relative glass-effect rounded-2xl border border-white border-opacity-15 p-10 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 ${
+                        className={`relative glass-effect rounded-2xl border border-white border-opacity-15 p-10 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 hover-lift ${
                             activeCard === index 
-                                ? 'bg-white bg-opacity-15 scale-105 shadow-3xl opacity-100 filter-none z-10 w-72 border-white border-opacity-25' 
+                                ? 'bg-white bg-opacity-15 scale-105 shadow-3xl opacity-100 filter-none z-overlay w-72 border-white border-opacity-25' 
                                 : 'bg-white bg-opacity-8'
                         }`}
                         onClick={() => toggleCard(index)}

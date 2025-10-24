@@ -3,7 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { IMAGES } from '../config/images';
+import { IMAGES } from '../../config/images';
+import '@/styles/animations.css';
+import '@/styles/layout.css';
+import '@/styles/theme.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,11 +26,11 @@ const AboutSection = () => {
     }, []);
 
     return (
-        <div className="relative min-h-screen overflow-hidden z-10 mt-[150vh] bg-cover bg-center bg-no-repeat"
+        <div className="relative min-h-screen overflow-hidden z-base mt-[150vh] bg-cover bg-center bg-no-repeat about-section"
              style={{backgroundImage: `url('/assets/images/chef.webp')`}}>
             <div className="w-full h-screen flex items-center justify-start opacity-0" ref={aboutContainerRef}>
                 {/* 内容区域 - 从左边算起30-35%位置 */}
-                <div className="relative text-justify py-20 px-16 flex flex-col justify-end z-20 max-w-2xl w-2/5 mr-16 mb-20">
+                <div className="relative text-justify py-20 px-16 flex flex-col justify-end z-overlay max-w-2xl w-2/5 mr-16 mb-20">
                     <h2 className="text-6xl font-bold text-black mb-8 relative inline-block tracking-wider">关于我们</h2>
                     <p className="text-lg leading-relaxed text-gray-800 text-left max-w-2xl">
                         我们是一家致力于提供精致料理与品越服务的日式料理餐厅。以极致的匠心打造美食。严选当季新鲜食材,融合传统与创意,呈现日本料理美。
@@ -38,7 +41,7 @@ const AboutSection = () => {
             </div>
 
             {/* 樱花花瓣 - 屏幕右半部分飘落 */}
-            <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none z-10">
+            <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none z-base">
                 <div className="absolute w-8 h-8 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/4 top-0" 
                      style={{backgroundImage: `url('${IMAGES.petals[0]}')`, animationDuration: '8s', animationDelay: '0s'}}></div>
                 <div className="absolute w-10 h-10 bg-cover bg-center bg-no-repeat animate-fall rounded-full opacity-60 left-1/3 top-0" 
