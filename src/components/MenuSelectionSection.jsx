@@ -28,11 +28,11 @@ const MenuSelectionSection = () => {
         <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center overflow-hidden py-16 px-5 font-besley z-10" 
              style={{backgroundImage: `url('/assets/images/menubg.webp')`}} id="menu-selection">
             {/* 遮罩层 */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 z-10 pointer-events-none"></div>
+            {/* <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 z-10 pointer-events-none"></div> */}
             
             <div className="flex gap-16 max-w-6xl w-full opacity-0 translate-y-12 relative z-20" ref={menuContainerRef}>
                 {/* Sushi & Sashimi 选项 */}
-                <a href="sushimenu/sashimi.html" className="flex-1 relative h-[500px] tokyo-gold-border glass-effect cursor-pointer transition-all duration-400 flex items-center justify-center overflow-hidden no-underline group">
+                <a href="sushimenu/sashimi.html" className="flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex items-center justify-center overflow-hidden no-underline group">
                     {/* 装饰边框 */}
                     <div className="absolute w-full h-full pointer-events-none">
                         <div className="absolute top-5 left-5 w-20 h-20 border-2 border-tokyo-gold border-r-0 border-b-0"></div>
@@ -48,7 +48,7 @@ const MenuSelectionSection = () => {
                 </a>
 
                 {/* Grand Menu 选项 */}
-                <a href="grandmenu/zensai.html" className="flex-1 relative h-[500px] tokyo-gold-border glass-effect cursor-pointer transition-all duration-400 flex items-center justify-center overflow-hidden no-underline group">
+                <a href="grandmenu/zensai.html" className="flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex items-center justify-center overflow-hidden no-underline group">
                     {/* 装饰边框 */}
                     <div className="absolute w-full h-full pointer-events-none">
                         <div className="absolute top-5 left-5 w-20 h-20 border-2 border-tokyo-gold border-r-0 border-b-0"></div>
