@@ -54,7 +54,7 @@ const ValuesSection = () => {
                                 ? 'max-w-2xl opacity-100 translate-y-0' 
                                 : 'max-w-0 opacity-0 translate-y-2'
                         }`}>
-                            <p className="text-justify">{value.content}</p>
+                            <p className="text-justify writing-mode-vertical-rl text-orientation-mixed">{value.content}</p>
                         </div>
                     </div>
                 ))}
