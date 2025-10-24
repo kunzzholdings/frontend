@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import { IMAGES } from '../../config/images';
+import { IMAGES } from '../../../config/images';
 import '@/styles/animations.css';
 import '@/styles/layout.css';
 import '@/styles/theme.css';
+import './ValuesSection.css';
 
 const ValuesSection = () => {
     const [activeCard, setActiveCard] = useState(null);
@@ -33,31 +34,31 @@ const ValuesSection = () => {
     ];
 
     return (
-        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex-center py-16 px-5 overflow-hidden z-base"
+        <div className="relative min-h-screen values-background flex-center py-16 px-5 overflow-hidden z-base"
              style={{backgroundImage: `url('/assets/images/vision.png')`}}>
             {/* 遮罩层 */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-base pointer-events-none"></div>
+            <div className="values-overlay absolute top-0 left-0 w-full h-full z-base pointer-events-none"></div>
             
-            <div className={`relative z-overlay flex flex-row items-center justify-center gap-5 transition-all duration-700 ${activeCard !== null ? 'has-active' : ''}`}>
+            <div className={`values-container relative z-overlay flex flex-row items-center justify-center gap-5 transition-all duration-700 ${activeCard !== null ? 'has-active' : ''}`}>
                 {values.map((value, index) => (
                     <div 
                         key={index}
-                        className={`relative glass-effect rounded-2xl border border-white border-opacity-15 p-10 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 hover-lift ${
+                        className={`values-card relative glass-effect rounded-2xl border border-white border-opacity-15 p-10 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 hover-lift ${
                             activeCard === index 
-                                ? 'bg-white bg-opacity-15 scale-105 shadow-3xl opacity-100 filter-none z-overlay w-72 border-white border-opacity-25' 
-                                : 'bg-white bg-opacity-8'
+                                ? 'active' 
+                                : ''
                         }`}
                         onClick={() => toggleCard(index)}
                     >
-                        <h3 className="text-4xl font-bold text-white tracking-widest text-shadow-lg transition-all duration-300 whitespace-nowrap text-center">
+                        <h3 className="values-title text-4xl font-bold text-white tracking-widest text-shadow-lg transition-all duration-300 whitespace-nowrap text-center">
                             {value.title}
                         </h3>
-                        <div className={`overflow-hidden transition-all duration-700 text-white text-base leading-relaxed tracking-wider text-shadow-sm mt-5 pt-5 border-t-2 border-white border-opacity-30 vertical-text transform ${
+                        <div className={`values-content overflow-hidden transition-all duration-700 text-white text-base leading-relaxed tracking-wider text-shadow-sm mt-5 pt-5 border-t-2 border-white border-opacity-30 vertical-text transform ${
                             activeCard === index 
-                                ? 'max-w-2xl opacity-100 translate-y-0' 
-                                : 'max-w-0 opacity-0 translate-y-2'
+                                ? 'active' 
+                                : 'inactive'
                         }`}>
-                            <p className="text-justify writing-mode-vertical-rl text-orientation-mixed">{value.content}</p>
+                            <p className="text-justify values-vertical-text">{value.content}</p>
                         </div>
                     </div>
                 ))}
