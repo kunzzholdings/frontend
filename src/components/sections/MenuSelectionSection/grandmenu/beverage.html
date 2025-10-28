@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飲み物 - Beverage</title>
+    <!-- Google Fonts - Besley -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Besley', 'Noto Sans JP', 'Arial', sans-serif;
+            background: #2a2a2a;
+            overflow-x: hidden;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 12%;
+            height: 100vh;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-content {
+            padding: 40px 30px;
+        }
+
+        .back-link {
+            display: block;
+            color: #c8a068;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #b8945f;
+        }
+
+        .menu-categories {
+            list-style: none;
+        }
+
+        .menu-categories li {
+            margin-bottom: 20px;
+        }
+
+        .menu-categories a {
+            display: block;
+            color: #666666;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 15px;
+        }
+
+        .menu-categories a:hover {
+            color: #c8a068;
+            border-left-color: #c8a068;
+        }
+
+        .menu-categories a.active {
+            color: #c8a068;
+            font-weight: 600;
+            border-left-color: #c8a068;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 12%;
+            width: 88%;
+            min-height: 100vh;
+            background: url('/images/menubg2.webp');
+            position: relative;
+        }
+
+
+        /* 菜单图片画廊 */
+        .menu-gallery {
+            display: flex;
+            overflow: hidden;
+            gap: 0;
+            user-select: none;
+            cursor: grab;
+        }
+
+        .menu-gallery:active {
+            cursor: grabbing;
+        }
+
+        .menu-gallery-container {
+            display: flex;
+            will-change: transform;
+        }
+
+
+        .menu-image {
+            flex-shrink: 0;
+            max-width: 100%;
+            height: 100vh;
+        }
+
+
+        /* 加载动画 */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: #c8a068;
+        }
+
+        .loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid #c8a068;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <a href="/tokyo-test.html#menu-selection" class="back-link">← Back</a>
+            
+            <ul class="menu-categories">
+                <li><a href="zensai.html">Zensai</a></li>
+                <li><a href="wanmono.html">Wan Mono & Mushi Mono</a></li>
+                <li><a href="agemono.html">Agemono</a></li>
+                <li><a href="yakimono.html">Yakimono</a></li>
+                <li><a href="ippin.html">IPPIN Ryori</a></li>
+                <li><a href="menrui.html">Menrui</a></li>
+                <li><a href="curry.html">Curry Don</a></li>
+                <li><a href="donburi.html">Donburi</a></li>
+                <li><a href="setmeal.html">Set Meal</a></li>
+                <li><a href="dessert.html">Dessert</a></li>
+                <li><a href="beverage.html" class="active">Beverage</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 菜单图片画廊 -->
+        <div class="menu-gallery" id="menu-gallery">
+            <div class="menu-gallery-container" id="gallery-container">
+                <!-- 图片将通过JavaScript自动加载 -->
+            </div>
+        </div>
+
+    </div>
+
+        <script>
+        // 自动加载菜单图片
+        async function loadMenuImages() {
+            const container = document.getElementById('gallery-container');
+            const baseUrl = '/grand/beverage/';
+            
+            // 显示加载动画
+            container.innerHTML = '<div class="loading">正在加载菜单图片...</div>';
+            
+            // 预定义图片列表，按正确顺序排列
+            const imageList = [
+                '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', 
+                '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
+                '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
+                '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'
+            ];
+            
+            const loadedImages = [];
+            
+            // 按顺序加载图片
+            for (const imageFile of imageList) {
+                const imageUrl = `${baseUrl}${imageFile}`;
+                
+                try {
+                    const response = await fetch(imageUrl, { method: 'HEAD' });
+                    if (response.ok) {
+                        const img = document.createElement('img');
+                        img.src = imageUrl;
+                        img.alt = `饮品菜单页面${imageFile}`;
+                        img.className = 'menu-image';
+                        
+                        // 等待图片加载完成
+                        await new Promise((resolve, reject) => {
+                            img.onload = resolve;
+                            img.onerror = reject;
+                        });
+                        
+                        loadedImages.push(img);
+                    }
+                } catch (error) {
+                    // 如果图片不存在，跳过
+                    continue;
+                }
+            }
+            
+            // 显示所有加载成功的图片
+            if (loadedImages.length > 0) {
+                container.innerHTML = '';
+                loadedImages.forEach(img => {
+                    container.appendChild(img);
+                });
+                // 图片加载完成后初始化GSAP拖拽
+                initGSAPDraggable();
+            } else {
+                container.innerHTML = '<div class="loading">未找到菜单图片</div>';
+            }
+        }
+        
+        // GSAP Draggable 初始化
+        function initGSAPDraggable() {
+            const gallery = document.getElementById('menu-gallery');
+            const container = document.getElementById('gallery-container');
+            
+            // 等待图片加载完成后再计算尺寸
+            setTimeout(() => {
+                // 重新计算可拖拽的范围
+                const galleryWidth = gallery.offsetWidth;
+                const containerWidth = container.scrollWidth;
+                const maxDrag = Math.max(0, containerWidth - galleryWidth);
+                
+                console.log('Gallery width:', galleryWidth);
+                console.log('Container width:', containerWidth);
+                console.log('Max drag:', maxDrag);
+                
+                // 检测是否为触摸设备
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                
+                if (isTouchDevice) {
+                    // 触摸设备使用原生滑动
+                    initTouchScroll();
+                } else {
+                    // 桌面设备使用GSAP Draggable
+                    Draggable.create(container, {
+                        type: "x",
+                        bounds: { minX: -maxDrag, maxX: 0 },
+                        inertia: true,
+                        dragResistance: 0.1,
+                        throwResistance: 2000,
+                        onDrag: function() {
+                            // 拖拽时的回调
+                        },
+                        onThrowComplete: function() {
+                            // 惯性滚动完成时的回调
+                        }
+                    });
+                }
+                
+                // 鼠标滚轮水平滚动
+                gallery.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const currentX = gsap.getProperty(container, "x") || 0;
+                    const newX = Math.max(-maxDrag, Math.min(0, currentX + e.deltaY * 0.5));
+                    gsap.to(container, { x: newX, duration: 0.3, ease: "power2.out" });
+                });
+            }, 100);
+        }
+
+        // 触摸设备滑动功能
+        function initTouchScroll() {
+            const gallery = document.getElementById('menu-gallery');
+            const container = document.getElementById('gallery-container');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            
+            // 等待图片加载完成后再计算尺寸
+            setTimeout(() => {
+                // 触摸开始
+                gallery.addEventListener('touchstart', (e) => {
+                    isDown = true;
+                    startX = e.touches[0].pageX - gallery.offsetLeft;
+                    scrollLeft = gsap.getProperty(container, "x") || 0;
+                });
+
+                // 触摸结束
+                gallery.addEventListener('touchend', () => {
+                    isDown = false;
+                });
+
+                // 触摸移动
+                gallery.addEventListener('touchmove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.touches[0].pageX - gallery.offsetLeft;
+                    const walk = (x - startX) * 1.5;
+                    const newX = scrollLeft + walk;
+                    
+                    // 计算边界
+                    const galleryWidth = gallery.offsetWidth;
+                    const containerWidth = container.scrollWidth;
+                    const maxDrag = Math.max(0, containerWidth - galleryWidth);
+                    const boundedX = Math.max(-maxDrag, Math.min(0, newX));
+                    
+                    gsap.set(container, { x: boundedX });
+                });
+            }, 100);
+        }
+
+        // 页面加载完成后开始加载图片
+        document.addEventListener('DOMContentLoaded', loadMenuImages);
+    </script>
+</body>
+</html>
