@@ -155,7 +155,7 @@ const HeroSection = () => {
     }, []);
 
     return (
-        <div className="h-[200vh] relative">
+        <div className="h-[200vh] relative scroll-container">
             <div className="h-screen fixed-fullscreen overflow-hidden z-overlay" ref={sceneRef}>
                 {/* 背景内容 */}
                 <div className="hero-background absolute top-0 left-0 w-full h-full flex-center opacity-50 scale-100" ref={backgroundRef}>
