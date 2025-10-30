@@ -92,7 +92,7 @@
             margin-left: 12%;
             width: 88%;
             min-height: 100vh;
-            background: url('/images/menubg2.webp');
+            background: url('/assets/images/menubg2.webp');
             position: relative;
         }
 
@@ -153,7 +153,7 @@
     <!-- 侧边栏 -->
     <div class="sidebar">
         <div class="sidebar-content">
-            <a href="/tokyo-test.html#menu-selection" class="back-link">← Back</a>
+            <a href="/#menu-selection" class="back-link">← Back</a>
             
             <ul class="menu-categories">
                 <li><a href="zensai.html">Zensai</a></li>
@@ -186,7 +186,7 @@
         // 自动加载菜单图片
         async function loadMenuImages() {
             const container = document.getElementById('gallery-container');
-            const baseUrl = '/public/assets/images/grand/ippin/';
+            const baseUrl = '/assets/images/grand/ippin/';
             
             // 显示加载动画
             container.innerHTML = '<div class="loading">正在加载菜单图片...</div>';
