@@ -27,7 +27,7 @@ const AboutSection = () => {
     }, []);
 
     return (
-        <div className="about-section relative min-h-screen overflow-hidden z-base mt-[150vh] about-background"
+        <div className="about-section relative min-h-screen overflow-hidden z-base about-background"
              style={{backgroundImage: `url('/assets/images/chef.webp')`}}>
             <div className="w-full h-screen flex items-center justify-start opacity-0" ref={aboutContainerRef}>
                 {/* 内容区域 - 从左边算起30-35%位置 */}
