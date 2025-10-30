@@ -47,7 +47,7 @@ const HeroSection = () => {
             scrollTrigger: {
                 trigger: '.scroll-container',
                 start: 'top top',
-                end: 'bottom bottom',
+                end: 'bottom top',
                 scrub: 1
             }
         });
@@ -127,12 +127,11 @@ const HeroSection = () => {
 
         document.addEventListener('mousemove', handleMouseMove);
 
-        // 当滚动超过首屏（100vh）后，让 scene 被后续内容覆盖
+        // 当滚动到首屏底部时，释放首屏场景，让后续内容自然推上来
         ScrollTrigger.create({
             trigger: '.scroll-container',
-            start: 'top top',
-            end: '+=100%',
-            onLeave: () => {
+            start: 'bottom top',
+            onEnter: () => {
                 gsap.set(sceneRef.current, {
                     pointerEvents: 'none',
                     zIndex: -1,
@@ -140,7 +139,7 @@ const HeroSection = () => {
                     top: '0'
                 });
             },
-            onEnterBack: () => {
+            onLeaveBack: () => {
                 gsap.set(sceneRef.current, {
                     pointerEvents: 'auto',
                     zIndex: 1,
