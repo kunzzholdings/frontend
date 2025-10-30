@@ -29,9 +29,9 @@ const AboutSection = () => {
     return (
         <div className="about-section relative min-h-screen overflow-hidden z-base about-background"
              style={{backgroundImage: `url('/assets/images/chef.webp')`}}>
-            <div className="w-full h-screen flex items-center justify-start opacity-0" ref={aboutContainerRef}>
-                {/* 内容区域 - 从左边算起30-35%位置 */}
-                <div className="about-content relative text-justify py-20 px-16 flex flex-col justify-end z-overlay max-w-2xl w-2/5 mr-16 mb-20">
+            <div className="w-full h-screen opacity-0" ref={aboutContainerRef}>
+                {/* 内容区域 - 使用普通 CSS 定位到屏幕四分之三处 */}
+                <div className="about-content z-overlay text-justify">
                     <h2 className="about-title text-6xl font-bold text-black mb-8 relative inline-block tracking-wider">关于我们</h2>
                     <p className="about-text text-lg leading-relaxed text-gray-800 text-left max-w-2xl">
                         我们是一家致力于提供精致料理与品越服务的日式料理餐厅。以极致的匠心打造美食。严选当季新鲜食材,融合传统与创意,呈现日本料理美。

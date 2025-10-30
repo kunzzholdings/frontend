@@ -43,7 +43,14 @@
 
 /* 内容区域动画 */
 .about-content {
-  will-change: opacity;
+  position: absolute;
+  top: 50%;
+  left: 75%; /* 放置在屏幕的四分之三处 */
+  transform: translate(-50%, -50%);
+  max-width: 32rem;
+  width: 32rem;
+  padding: 2.5rem 2rem;
+  will-change: opacity, transform;
 }
 
 .about-title {
@@ -67,8 +74,10 @@
 /* 响应式调整 */
 @media (max-width: 1024px) {
   .about-content {
-    padding: 3rem 2rem;
-    max-width: 90%;
+    left: 60%;
+    width: 28rem;
+    max-width: 85%;
+    padding: 2rem 1.5rem;
   }
   
   .about-title {
