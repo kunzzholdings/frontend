@@ -34,7 +34,7 @@ const MenuSelectionSection = () => {
             
             <div className="menu-container flex gap-16 max-w-6xl w-full opacity-0 translate-y-12 relative z-overlay" ref={menuContainerRef}>
                 {/* Sushi & Sashimi 选项 */}
-                <a href="sushimenu/sashimi.html" className="menu-option flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex-center overflow-hidden no-underline group hover-lift">
+                <a href="/menus/sushimenu/sashimi.html" className="menu-option flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex-center overflow-hidden no-underline group hover-lift">
                     {/* 装饰边框 */}
                     <div className="absolute w-full h-full pointer-events-none">
                         <div className="menu-border menu-border-top-left"></div>
@@ -50,7 +50,7 @@ const MenuSelectionSection = () => {
                 </a>
 
                 {/* Grand Menu 选项 */}
-                <a href="grandmenu/zensai.html" className="menu-option flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex-center overflow-hidden no-underline group hover-lift">
+                <a href="/menus/grandmenu/zensai.html" className="menu-option flex-1 relative h-[500px] tokyo-gold-border cursor-pointer transition-all duration-400 flex-center overflow-hidden no-underline group hover-lift">
                     {/* 装饰边框 */}
                     <div className="absolute w-full h-full pointer-events-none">
                         <div className="menu-border menu-border-top-left"></div>
