@@ -33,9 +33,16 @@ const ValuesSection = () => {
         }
     ];
 
+    const handleBackgroundClick = () => {
+        if (activeCard !== null) {
+            setActiveCard(null);
+        }
+    };
+
     return (
         <div className="relative min-h-screen values-background flex-center py-16 px-5 overflow-hidden z-base"
-             style={{backgroundImage: `url('/assets/images/vision.png')`}}>
+             style={{backgroundImage: `url('/assets/images/vision.png')`}}
+             onClick={handleBackgroundClick}>
             {/* 遮罩层 */}
             <div className="values-overlay absolute top-0 left-0 w-full h-full z-base pointer-events-none"></div>
             
@@ -43,17 +50,17 @@ const ValuesSection = () => {
                 {values.map((value, index) => (
                     <div 
                         key={index}
-                        className={`values-card relative glass-effect rounded-2xl border border-white border-opacity-15 p-10 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 hover-lift ${
+                        className={`values-card relative glass-effect rounded-2xl border border-white border-opacity-15 p-6 cursor-pointer transition-all duration-700 shadow-2xl vertical-text flex flex-col items-center justify-center h-96 w-24 flex-shrink-0 opacity-100 filter-none scale-100 hover-lift ${
                             activeCard === index 
                                 ? 'active' 
                                 : ''
                         }`}
-                        onClick={() => toggleCard(index)}
+                        onClick={(e) => { e.stopPropagation(); toggleCard(index); }}
                     >
                         <h3 className="values-title text-4xl font-bold text-white tracking-widest text-shadow-lg transition-all duration-300 whitespace-nowrap text-center">
                             {value.title}
                         </h3>
-                        <div className={`values-content overflow-hidden transition-all duration-700 text-white text-base leading-relaxed tracking-wider text-shadow-sm mt-5 pt-5 border-t-2 border-white border-opacity-30 vertical-text transform ${
+                        <div className={`values-content overflow-hidden transition-all duration-700 text-white text-base leading-relaxed tracking-wider text-shadow-sm pt-5 border-t-2 border-white border-opacity-30 vertical-text transform ${
                             activeCard === index 
                                 ? 'active' 
                                 : 'inactive'
