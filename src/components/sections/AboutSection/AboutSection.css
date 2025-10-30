@@ -45,7 +45,7 @@
 .about-content {
   position: absolute;
   top: 50%;
-  left: 75%; /* 放置在屏幕的四分之三处 */
+  left: 70%; 
   transform: translate(-50%, -50%);
   max-width: 32rem;
   width: 32rem;
