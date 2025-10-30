@@ -129,7 +129,7 @@ const HeroSection = () => {
 
         // 当滚动超过首屏（100vh）后，让 scene 被后续内容覆盖
         ScrollTrigger.create({
-            trigger: sceneRef.current,
+            trigger: '.scroll-container',
             start: 'top top',
             end: '+=100%',
             onLeave: () => {
