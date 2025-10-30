@@ -127,21 +127,22 @@ const HeroSection = () => {
 
         document.addEventListener('mousemove', handleMouseMove);
 
-        // 当滚动超过第一页后，让 scene 被后续内容覆盖
+        // 当滚动超过首屏（100vh）后，让 scene 被后续内容覆盖
         ScrollTrigger.create({
-            trigger: '.scroll-container',
-            start: 'bottom top',
-            onEnter: () => {
-                gsap.set(sceneRef.current, { 
-                    pointerEvents: 'none', 
+            trigger: sceneRef.current,
+            start: 'top top',
+            end: '+=100%',
+            onLeave: () => {
+                gsap.set(sceneRef.current, {
+                    pointerEvents: 'none',
                     zIndex: -1,
                     position: 'absolute',
                     top: '0'
                 });
             },
-            onLeaveBack: () => {
-                gsap.set(sceneRef.current, { 
-                    pointerEvents: 'auto', 
+            onEnterBack: () => {
+                gsap.set(sceneRef.current, {
+                    pointerEvents: 'auto',
                     zIndex: 1,
                     position: 'fixed',
                     top: '0'
