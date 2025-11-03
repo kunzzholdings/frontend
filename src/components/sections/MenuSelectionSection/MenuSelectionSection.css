@@ -86,6 +86,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 
 /* 响应式调整 */
