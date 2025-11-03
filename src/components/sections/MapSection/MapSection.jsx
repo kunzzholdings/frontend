@@ -92,7 +92,7 @@ const MapSection = () => {
                             {/* 地图 */}
                             <div className="map-wrapper mb-6">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.5573740266547!2d103.77789087496756!3d1.4612851986216394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da72f89453e063%3A0x9c3c3c3c3c3c3c3c!2sMid%20Valley%20Southkey!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31907.468559496578!2d103.73373499468003!3d1.50959129373446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da73d12ff16aa9%3A0x45bb0865198b1bc3!2sTokyo%20Japanese%20Cuisine%20%40%20Paradigm%20Mall%20JB!5e0!3m2!1sen!2smy!4v1762160553896!5m2!1sen!2smy"
                                     width="100%"
                                     height="250"
                                     style={{ border: 0, borderRadius: '8px' }}
@@ -108,7 +108,7 @@ const MapSection = () => {
                                 <div className="info-row">
                                     <span className="font-semibold" style={{ color: '#8B6F47' }}>地址：</span>
                                     <span className="text-gray-700 text-sm md:text-base">
-                                        T-042 Level 3, Mid Valley, The Mall, Southkey, 81100 Johor Bahru, Johor Darul Ta'zim
+                                    Lot UG-25, Upper Ground Floor, Paradigm Mall, Lbh Skudai, Taman Bukit Mewah, 81200 Johor Bahru, Johor Darul Ta'zim
                                     </span>
                                 </div>
 
@@ -135,7 +135,7 @@ const MapSection = () => {
                             {/* 地图 */}
                             <div className="map-wrapper mb-6">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.5936837266755!2d103.7613471749675!3d1.4546513986346697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da72f4e7c8c8c3%3A0x9d9d9d9d9d9d9d9d!2sParadigm%20Mall%20Johor%20Bahru!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4475276450275!2d103.77369647567853!3d1.501963561066547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6dd0d05beaa3%3A0x5617d385f1f81e11!2sTokyo%20Japanese%20Cuisine%20%40%20Mid%20Valley%20Southkey%20(NORTH%20COURT)%20JB!5e0!3m2!1sen!2smy!4v1762160658810!5m2!1sen!2smy"
                                     width="100%"
                                     height="250"
                                     style={{ border: 0, borderRadius: '8px' }}
@@ -151,7 +151,7 @@ const MapSection = () => {
                                 <div className="info-row">
                                     <span className="font-semibold" style={{ color: '#8B6F47' }}>地址：</span>
                                     <span className="text-gray-700 text-sm md:text-base">
-                                        Lot UG-25, Upper Ground Floor, Paradigm Mall, Lbh Skudai, Taman Bukit Mewah, 81200 Johor Bahru, Johor Darul Ta'zim
+                                        T-042 Level 3, Mid Valley, The Mall, Southkey, 81100 Johor Bahru, Johor Darul Ta'zim
                                     </span>
                                 </div>
 
