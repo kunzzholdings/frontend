@@ -35,14 +35,12 @@
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
 .map-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
   border-color: rgba(212, 175, 55, 0.4);
 }
 
@@ -58,7 +56,6 @@
 .map-container {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 

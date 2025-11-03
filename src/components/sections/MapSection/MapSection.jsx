@@ -77,7 +77,7 @@ const MapSection = () => {
             <div className="relative z-overlay max-w-7xl mx-auto">
                 {/* 标题 */}
                 <div ref={titleRef} className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-4 text-shadow-lg">我们在这</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-4">我们在这</h2>
                     <div className="w-24 h-1 bg-tokyo-gold mx-auto"></div>
                 </div>
 
