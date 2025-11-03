@@ -2,6 +2,14 @@
 
 .map-section {
   position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 店铺卡片样式 */
@@ -12,6 +20,8 @@
   box-shadow: 0 8px 24px rgba(139, 111, 71, 0.15);
   transition: all 0.3s ease;
   border: 2px solid rgba(212, 175, 55, 0.3);
+  width: 100%;
+  max-width: 600px;
 }
 
 .store-card:hover {
@@ -42,13 +52,33 @@
 }
 
 /* 响应式调整 */
+@media (max-width: 1024px) {
+  .store-card {
+    max-width: 500px;
+  }
+}
+
 @media (max-width: 768px) {
+  .map-section {
+    background-attachment: scroll;
+  }
+  
+  .store-card {
+    max-width: 100%;
+  }
+  
   .store-card-inner {
     padding: 24px;
   }
 
   .map-wrapper iframe {
     height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-card-inner {
+    padding: 20px;
   }
 }
 
