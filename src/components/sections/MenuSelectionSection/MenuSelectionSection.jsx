@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { IMAGES } from '../../../config/images';
@@ -42,7 +43,9 @@ const MenuSelectionSection = () => {
                     </div>
                     
                     <div className="text-center text-white z-base relative no-underline w-full h-full flex-center">
-                        <img src={IMAGES.sushi} alt="寿司与刺身菜单" className="menu-image max-w-[80%] max-h-[80%] object-contain transition-transform duration-400 group-hover:scale-105" />
+                        <div className="menu-image max-w-[80%] max-h-[80%] relative w-full h-full">
+                            <Image src={IMAGES.sushi} alt="寿司与刺身菜单" fill className="object-contain transition-transform duration-400 group-hover:scale-105" />
+                        </div>
                     </div>
                     
                     {/* 悬停效果 */}
@@ -58,7 +61,9 @@ const MenuSelectionSection = () => {
                     </div>
                     
                     <div className="text-center text-white z-base relative no-underline w-full h-full flex-center">
-                        <img src={IMAGES.grand} alt="精选菜单" className="menu-image max-w-[80%] max-h-[80%] object-contain transition-transform duration-400 group-hover:scale-105" />
+                        <div className="menu-image max-w-[80%] max-h-[80%] relative w-full h-full">
+                            <Image src={IMAGES.grand} alt="精选菜单" fill className="object-contain transition-transform duration-400 group-hover:scale-105" />
+                        </div>
                     </div>
                     
                     {/* 悬停效果 */}

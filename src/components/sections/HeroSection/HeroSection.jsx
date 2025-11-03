@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { IMAGES } from '../../../config/images';
@@ -159,18 +160,21 @@ const HeroSection = () => {
             <div className="h-screen fixed-fullscreen overflow-hidden z-overlay" ref={sceneRef}>
                 {/* 背景内容 */}
                 <div className="hero-background absolute top-0 left-0 w-full h-full flex-center opacity-50 scale-100" ref={backgroundRef}>
-                    <img 
-                        src={IMAGES.tokyoRestaurant} 
-                        alt="Japanese Restaurant" 
-                        className="hero-restaurant-image w-full h-full object-cover brightness-60 scale-100"
-                        ref={restaurantImageRef}
-                    />
+                    <div className="hero-restaurant-image w-full h-full brightness-60 scale-100" ref={restaurantImageRef}>
+                        <Image 
+                            src={IMAGES.tokyoRestaurant} 
+                            alt="Japanese Restaurant" 
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
                 </div>
 
                 {/* Logo和标题 */}
                 <div className="hero-content-overlay absolute-center text-center text-white z-modal opacity-100" ref={contentOverlayRef}>
-                    <div className="hero-logo w-32 h-32 bg-tokyo-gold rounded-full mx-auto mb-8 flex-center shadow-2xl overflow-hidden" ref={logoRef}>
-                        <img src={IMAGES.tokyoLogo} alt="Tokyo Logo" className="w-full h-full object-cover" />
+                    <div className="hero-logo w-32 h-32 bg-tokyo-gold rounded-full mx-auto mb-8 flex-center shadow-2xl overflow-hidden relative" ref={logoRef}>
+                        <Image src={IMAGES.tokyoLogo} alt="Tokyo Logo" fill className="object-cover" />
                     </div>
                     <h1 className="hero-title text-6xl font-bold tracking-widest mb-5 text-shadow-lg" ref={titleRef}>TOKYO JAPANESE CUISINE</h1>
                     <p className="hero-subtitle text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef1}>精致美食·品越服务</p>
