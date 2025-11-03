@@ -4,49 +4,23 @@
   position: relative;
 }
 
-.map-background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/assets/images/address.webp');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 0;
-}
-
-.map-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(3px);
-  z-index: 1;
-}
-
 /* 地图卡片样式 */
 .map-card {
-  background: rgba(26, 26, 26, 0.85);
-  border-radius: 16px;
+  background: #1a1a1a;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.2);
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
 .map-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
 .map-card-header {
   padding: 24px 24px 16px 24px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #0f0f0f;
 }
 
 .map-card-content {
@@ -54,19 +28,13 @@
 }
 
 .map-container {
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
 }
 
 .map-container iframe {
   display: block;
-  filter: grayscale(0.2) contrast(1.1);
-  transition: filter 0.3s ease;
-}
-
-.map-container:hover iframe {
-  filter: grayscale(0) contrast(1.15);
 }
 
 /* 响应式调整 */

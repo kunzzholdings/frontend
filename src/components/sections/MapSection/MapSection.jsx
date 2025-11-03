@@ -66,15 +66,8 @@ const MapSection = () => {
     }, []);
 
     return (
-        <div className="map-section relative min-h-screen py-20 px-4 md:px-8 overflow-hidden z-base">
-            {/* 背景图片 */}
-            <div className="map-background-image"></div>
-            
-            {/* 半透明遮罩 */}
-            <div className="map-overlay"></div>
-
-            {/* 内容容器 */}
-            <div className="relative z-overlay max-w-7xl mx-auto">
+        <div className="map-section relative min-h-screen py-20 px-4 md:px-8 bg-neutral-900">
+            <div className="max-w-7xl mx-auto">
                 {/* 标题 */}
                 <div ref={titleRef} className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-white mb-4">我们在这</h2>
