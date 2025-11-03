@@ -108,7 +108,7 @@ const MapSection = () => {
                                 <div className="info-row">
                                     <span className="font-semibold" style={{ color: '#8B6F47' }}>地址：</span>
                                     <span className="text-gray-700 text-sm md:text-base">
-                                    Lot UG-25, Upper Ground Floor, Paradigm Mall, Lbh Skudai, Taman Bukit Mewah, 81200 Johor Bahru, Johor Darul Ta'zim
+                                    Lot UG-25, Upper Ground Floor, Paradigm Mall, Lbh Skudai, Taman Bukit Mewah, 81200 Johor Bahru, Johor Darul Ta&apos;zim
                                     </span>
                                 </div>
 
@@ -151,7 +151,7 @@ const MapSection = () => {
                                 <div className="info-row">
                                     <span className="font-semibold" style={{ color: '#8B6F47' }}>地址：</span>
                                     <span className="text-gray-700 text-sm md:text-base">
-                                        T-042 Level 3, Mid Valley, The Mall, Southkey, 81100 Johor Bahru, Johor Darul Ta'zim
+                                        T-042 Level 3, Mid Valley, The Mall, Southkey, 81100 Johor Bahru, Johor Darul Ta&apos;zim
                                     </span>
                                 </div>
 
