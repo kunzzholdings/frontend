@@ -14,7 +14,6 @@ const MapSection = () => {
     const titleRef = useRef(null);
     const mainStoreRef = useRef(null);
     const branchStoreRef = useRef(null);
-    const lanternsRef = useRef([]);
 
     useEffect(() => {
         // 标题动画
@@ -28,20 +27,6 @@ const MapSection = () => {
                 trigger: '.map-section',
                 start: 'top 70%',
                 toggleActions: 'play none none none'
-            }
-        });
-
-        // 灯笼动画
-        lanternsRef.current.forEach((lantern, i) => {
-            if (lantern) {
-                gsap.to(lantern, {
-                    y: '+=15',
-                    duration: 2 + i * 0.3,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: 'sine.inOut',
-                    delay: i * 0.2
-                });
             }
         });
 
@@ -90,36 +75,6 @@ const MapSection = () => {
                 backgroundRepeat: 'no-repeat'
             }}
         >
-            {/* 顶部装饰边框 */}
-            <div className="decorative-border-top"></div>
-            
-            {/* 底部装饰边框 */}
-            <div className="decorative-border-bottom"></div>
-
-            {/* 云状装饰 - 左侧 */}
-            <div className="cloud-decoration cloud-left"></div>
-            
-            {/* 云状装饰 - 右侧 */}
-            <div className="cloud-decoration cloud-right"></div>
-
-            {/* 灯笼装饰 */}
-            <div 
-                ref={el => lanternsRef.current[0] = el}
-                className="lantern lantern-1"
-            ></div>
-            <div 
-                ref={el => lanternsRef.current[1] = el}
-                className="lantern lantern-2"
-            ></div>
-            <div 
-                ref={el => lanternsRef.current[2] = el}
-                className="lantern lantern-3"
-            ></div>
-            <div 
-                ref={el => lanternsRef.current[3] = el}
-                className="lantern lantern-4"
-            ></div>
-
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* 标题 */}
                 <div ref={titleRef} className="text-center mb-12">
