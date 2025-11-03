@@ -81,7 +81,15 @@ const MapSection = () => {
     }, []);
 
     return (
-        <div className="map-section relative min-h-screen py-16 px-4 md:px-8 overflow-hidden" style={{ background: '#f5f0e8' }}>
+        <div 
+            className="map-section relative min-h-screen py-16 px-4 md:px-8 overflow-hidden"
+            style={{ 
+                backgroundImage: 'url(/assets/images/address.webp)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}
+        >
             {/* 顶部装饰边框 */}
             <div className="decorative-border-top"></div>
             
