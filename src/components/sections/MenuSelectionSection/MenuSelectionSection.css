@@ -91,6 +91,10 @@
 
 /* 响应式调整 */
 @media (max-width: 1024px) {
+  .menu-background {
+    background-attachment: scroll;
+  }
+  
   .menu-container {
     gap: 2rem;
   }

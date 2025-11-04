@@ -74,6 +74,10 @@
 
 /* 响应式调整 */
 @media (max-width: 1024px) {
+  .about-background {
+    background-attachment: scroll;
+  }
+  
   .about-content {
     left: 60%;
     width: 28rem;
