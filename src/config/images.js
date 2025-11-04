@@ -8,9 +8,9 @@ const IMAGES = {
     blossom: '/assets/images/blossom.png',
     menuBg: '/assets/images/menubg.webp',
     menuBg2: '/assets/images/menubg2.webp',
-    sushi: '/assets/images/sushi.png',
-    grand: '/assets/images/grand.png',
-    vision: '/assets/images/vision.png',
+    sushi: '/assets/images/sushi.webp',
+    grand: '/assets/images/grand.webp',
+    vision: '/assets/images/vision.webp',
     background: '/assets/images/background.png',
     
     // 樱花花瓣数组
