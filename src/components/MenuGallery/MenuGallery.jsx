@@ -2,17 +2,14 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
 import './MenuGallery.css';
-
-gsap.registerPlugin(Draggable);
 
 const MenuGallery = ({ category, menuType }) => {
     const galleryRef = useRef(null);
     const containerRef = useRef(null);
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
-    const draggableInstance = useRef(null);
+    const wheelHandlerRef = useRef(null);
 
     useEffect(() => {
         loadMenuImages();
@@ -21,20 +18,17 @@ const MenuGallery = ({ category, menuType }) => {
     useEffect(() => {
         if (images.length > 0) {
             const timer = setTimeout(() => {
-                initGSAPDraggable();
-            }, 100);
-            return () => clearTimeout(timer);
+                initDragAndScroll();
+            }, 200);
+            return () => {
+                clearTimeout(timer);
+                // 清理滚轮事件监听器
+                if (wheelHandlerRef.current && galleryRef.current) {
+                    galleryRef.current.removeEventListener('wheel', wheelHandlerRef.current);
+                }
+            };
         }
     }, [images]);
-
-    // 清理 Draggable 实例
-    useEffect(() => {
-        return () => {
-            if (draggableInstance.current) {
-                draggableInstance.current[0].kill();
-            }
-        };
-    }, []);
 
     const loadMenuImages = async () => {
         setLoading(true);
@@ -58,67 +52,75 @@ const MenuGallery = ({ category, menuType }) => {
         setLoading(false);
     };
 
-    const initGSAPDraggable = () => {
+    const initDragAndScroll = () => {
         const gallery = galleryRef.current;
         const container = containerRef.current;
         
         if (!gallery || !container) return;
 
+        // 初始化拖拽功能
+        initSimpleDrag();
+
+        // 鼠标滚轮水平滚动
         const galleryWidth = gallery.offsetWidth;
         const containerWidth = container.scrollWidth;
         const maxDrag = Math.max(0, containerWidth - galleryWidth);
 
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-        if (isTouchDevice) {
-            initTouchScroll();
-        } else {
-            draggableInstance.current = Draggable.create(container, {
-                type: "x",
-                bounds: { minX: -maxDrag, maxX: 0 },
-                inertia: true,
-                dragResistance: 0.1,
-                throwResistance: 2000,
-            });
-        }
-
-        // 鼠标滚轮水平滚动
-        const handleWheel = (e) => {
+        wheelHandlerRef.current = (e) => {
             e.preventDefault();
             const currentX = gsap.getProperty(container, "x") || 0;
             const newX = Math.max(-maxDrag, Math.min(0, currentX - e.deltaY * 0.5));
             gsap.to(container, { x: newX, duration: 0.3, ease: "power2.out" });
         };
 
-        gallery.addEventListener('wheel', handleWheel, { passive: false });
-
-        return () => {
-            gallery.removeEventListener('wheel', handleWheel);
-        };
+        gallery.addEventListener('wheel', wheelHandlerRef.current, { passive: false });
     };
 
-    const initTouchScroll = () => {
+    const initSimpleDrag = () => {
         const gallery = galleryRef.current;
         const container = containerRef.current;
         let isDown = false;
         let startX;
         let scrollLeft;
+        let velocity = 0;
+        let lastX = 0;
+        let lastTime = Date.now();
 
-        const handleTouchStart = (e) => {
+        const handleStart = (pageX) => {
             isDown = true;
-            startX = e.touches[0].pageX - gallery.offsetLeft;
+            startX = pageX - gallery.offsetLeft;
             scrollLeft = gsap.getProperty(container, "x") || 0;
+            velocity = 0;
+            lastX = pageX;
+            lastTime = Date.now();
+            gallery.style.cursor = 'grabbing';
         };
 
-        const handleTouchEnd = () => {
+        const handleEnd = () => {
             isDown = false;
+            gallery.style.cursor = 'grab';
+            
+            // 添加惯性滚动
+            if (Math.abs(velocity) > 0.5) {
+                const galleryWidth = gallery.offsetWidth;
+                const containerWidth = container.scrollWidth;
+                const maxDrag = Math.max(0, containerWidth - galleryWidth);
+                const currentX = gsap.getProperty(container, "x") || 0;
+                const targetX = Math.max(-maxDrag, Math.min(0, currentX + velocity * 50));
+                
+                gsap.to(container, { 
+                    x: targetX, 
+                    duration: 0.8, 
+                    ease: "power2.out" 
+                });
+            }
         };
 
-        const handleTouchMove = (e) => {
+        const handleMove = (pageX) => {
             if (!isDown) return;
-            e.preventDefault();
-            const x = e.touches[0].pageX - gallery.offsetLeft;
-            const walk = (x - startX) * 1.5;
+            
+            const x = pageX - gallery.offsetLeft;
+            const walk = x - startX;
             const newX = scrollLeft + walk;
 
             const galleryWidth = gallery.offsetWidth;
@@ -127,12 +129,47 @@ const MenuGallery = ({ category, menuType }) => {
             const boundedX = Math.max(-maxDrag, Math.min(0, newX));
 
             gsap.set(container, { x: boundedX });
+
+            // 计算速度
+            const now = Date.now();
+            const dt = now - lastTime;
+            if (dt > 0) {
+                velocity = (pageX - lastX) / dt;
+            }
+            lastX = pageX;
+            lastTime = now;
         };
 
-        gallery.addEventListener('touchstart', handleTouchStart);
-        gallery.addEventListener('touchend', handleTouchEnd);
-        gallery.addEventListener('touchmove', handleTouchMove, { passive: false });
+        // 鼠标事件
+        gallery.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            handleStart(e.pageX);
+        });
+
+        gallery.addEventListener('mouseleave', handleEnd);
+        gallery.addEventListener('mouseup', handleEnd);
+
+        gallery.addEventListener('mousemove', (e) => {
+            if (isDown) {
+                e.preventDefault();
+                handleMove(e.pageX);
+            }
+        });
+
+        // 触摸事件
+        gallery.addEventListener('touchstart', (e) => {
+            handleStart(e.touches[0].pageX);
+        }, { passive: true });
+
+        gallery.addEventListener('touchend', handleEnd, { passive: true });
+
+        gallery.addEventListener('touchmove', (e) => {
+            if (isDown) {
+                handleMove(e.touches[0].pageX);
+            }
+        }, { passive: true });
     };
+
 
     return (
         <div className="menu-gallery" ref={galleryRef}>
