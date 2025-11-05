@@ -26,11 +26,12 @@ const HeroSection = () => {
     // 追踪资源加载状态
     const [imagesLoaded, setImagesLoaded] = useState({
         restaurant: false,
-        logo: false
+        logo: false,
+        door: false
     });
 
     // 检查所有图片是否加载完成
-    const allImagesLoaded = imagesLoaded.restaurant && imagesLoaded.logo;
+    const allImagesLoaded = imagesLoaded.restaurant && imagesLoaded.logo && imagesLoaded.door;
 
     useEffect(() => {
         // 设置初始状态
@@ -48,6 +49,18 @@ const HeroSection = () => {
         gsap.set([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
             opacity: 0
         });
+
+        // 预加载门的SVG图片
+        const doorImage = new Image();
+        doorImage.src = '/assets/images/Shoji.svg';
+        doorImage.onload = () => {
+            setImagesLoaded(prev => ({ ...prev, door: true }));
+        };
+        doorImage.onerror = () => {
+            console.error('门图片加载失败');
+            // 即使失败也标记为已加载，避免动画一直等待
+            setImagesLoaded(prev => ({ ...prev, door: true }));
+        };
     }, []);
 
     useEffect(() => {
