@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { IMAGES } from '../../../config/images';
@@ -22,6 +22,15 @@ const HeroSection = () => {
     const door4Ref = useRef(null);
     const backgroundRef = useRef(null);
     const restaurantImageRef = useRef(null);
+    
+    // 追踪资源加载状态
+    const [imagesLoaded, setImagesLoaded] = useState({
+        restaurant: false,
+        logo: false
+    });
+
+    // 检查所有图片是否加载完成
+    const allImagesLoaded = imagesLoaded.restaurant && imagesLoaded.logo;
 
     useEffect(() => {
         // 设置初始状态
@@ -39,10 +48,15 @@ const HeroSection = () => {
         gsap.set([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
             opacity: 0
         });
+    }, []);
+
+    useEffect(() => {
+        // 只有当所有图片加载完成后才开始动画
+        if (!allImagesLoaded) return;
 
         // 创建自动播放的开门动画时间线
         const tl = gsap.timeline({
-            delay: 0.5 // 页面加载后延迟0.5秒开始动画
+            delay: 0.3 // 资源加载后延迟0.3秒开始动画
         });
 
         // 门打开动画
@@ -123,7 +137,7 @@ const HeroSection = () => {
             document.removeEventListener('mousemove', handleMouseMove);
             tl.kill(); // 清理时间线
         };
-    }, []);
+    }, [allImagesLoaded]);
 
     return (
         <div className="snap-section relative scroll-container">
@@ -137,6 +151,7 @@ const HeroSection = () => {
                             fill
                             className="object-cover"
                             priority
+                            onLoad={() => setImagesLoaded(prev => ({ ...prev, restaurant: true }))}
                         />
                     </div>
                 </div>
@@ -144,7 +159,13 @@ const HeroSection = () => {
                 {/* Logo和标题 */}
                 <div className="hero-content-overlay absolute-center text-center text-white z-modal opacity-100" ref={contentOverlayRef}>
                     <div className="hero-logo w-32 h-32 bg-tokyo-gold rounded-full mx-auto mb-8 flex-center shadow-2xl overflow-hidden relative" ref={logoRef}>
-                        <Image src={IMAGES.tokyoLogo} alt="Tokyo Logo" fill className="object-cover" />
+                        <Image 
+                            src={IMAGES.tokyoLogo} 
+                            alt="Tokyo Logo" 
+                            fill 
+                            className="object-cover"
+                            onLoad={() => setImagesLoaded(prev => ({ ...prev, logo: true }))}
+                        />
                     </div>
                     <h1 className="hero-title text-6xl font-bold tracking-widest mb-5 text-shadow-lg" ref={titleRef}>TOKYO JAPANESE CUISINE</h1>
                     <p className="hero-subtitle text-2xl tracking-wider mb-2 opacity-90" ref={subtitleRef1}>精致美食·品越服务</p>
