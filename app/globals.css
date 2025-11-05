@@ -40,7 +40,6 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
-  scroll-behavior: smooth;
   
   /* 隐藏滚动条但保持滚动功能 */
   scrollbar-width: none; /* Firefox */
@@ -49,6 +48,17 @@ body {
 
 .snap-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* 平滑滚动过渡 */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .snap-container {
+    scroll-behavior: smooth;
+  }
 }
 
 .snap-section {
