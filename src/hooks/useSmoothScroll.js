@@ -34,7 +34,7 @@ export const useSmoothScroll = () => {
                 
                 gsap.to(container, {
                     scrollTop: targetPosition,
-                    duration: 1.2, // 调整这个值来控制滚动速度（秒）
+                    duration: 1, // 调整这个值来控制滚动速度（秒）
                     ease: 'power2.inOut',
                     onComplete: () => {
                         isScrolling = false;
@@ -50,7 +50,7 @@ export const useSmoothScroll = () => {
                 
                 gsap.to(container, {
                     scrollTop: targetPosition,
-                    duration: 1.2, // 调整这个值来控制滚动速度（秒）
+                    duration: 1, // 调整这个值来控制滚动速度（秒）
                     ease: 'power2.inOut',
                     onComplete: () => {
                         isScrolling = false;
