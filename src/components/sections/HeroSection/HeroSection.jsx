@@ -51,16 +51,22 @@ const HeroSection = () => {
         });
 
         // 预加载门的SVG图片
-        const doorImage = new Image();
-        doorImage.src = '/assets/images/Shoji.svg';
-        doorImage.onload = () => {
+        // useEffect 只在客户端运行，但为了安全起见还是检查 window
+        if (typeof window !== 'undefined') {
+            const doorImage = new window.Image();
+            doorImage.src = '/assets/images/Shoji.svg';
+            doorImage.onload = () => {
+                setImagesLoaded(prev => ({ ...prev, door: true }));
+            };
+            doorImage.onerror = () => {
+                console.error('门图片加载失败');
+                // 即使失败也标记为已加载，避免动画一直等待
+                setImagesLoaded(prev => ({ ...prev, door: true }));
+            };
+        } else {
+            // 如果在服务器端，直接标记为已加载
             setImagesLoaded(prev => ({ ...prev, door: true }));
-        };
-        doorImage.onerror = () => {
-            console.error('门图片加载失败');
-            // 即使失败也标记为已加载，避免动画一直等待
-            setImagesLoaded(prev => ({ ...prev, door: true }));
-        };
+        }
     }, []);
 
     useEffect(() => {
