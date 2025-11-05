@@ -43,105 +43,69 @@ const HeroSection = () => {
             opacity: 0
         });
 
-        // 使用wheel事件来控制门的打开
-        let doorProgress = 0;
-        let doorIsOpen = false;
-        let wheelTimeout = null;
+        // 创建自动播放的开门动画时间线
+        const tl = gsap.timeline({
+            delay: 0.5 // 页面加载后延迟0.5秒开始动画
+        });
 
-        const handleWheel = (e) => {
-            if (doorIsOpen) {
-                return; // 门已经打开，允许正常滚动
-            }
-            
-            // 阻止默认滚动行为，只在门还没完全打开时
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const delta = e.deltaY;
-            
-            // 只在向下滚动时才打开门
-            if (delta > 0) {
-                doorProgress = Math.max(0, Math.min(1, doorProgress + delta * 0.0015));
-            } else if (delta < 0 && doorProgress > 0) {
-                // 允许向上滚动来关闭门
-                doorProgress = Math.max(0, doorProgress + delta * 0.0015);
-            }
-            
-            // 更新门的动画状态
-            gsap.to(door2Ref.current, {
-                x: `-${doorProgress * 100}%`,
-                scale: 1 + doorProgress * 0.3,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(door3Ref.current, {
-                x: `${doorProgress * 100}%`,
-                scale: 1 + doorProgress * 0.3,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to([door1Ref.current, door4Ref.current], {
-                scale: 1 + doorProgress * 0.3,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(backgroundRef.current, {
-                opacity: doorProgress,
-                scale: 1 + doorProgress * 0.4,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(restaurantImageRef.current, {
-                scale: 1 + doorProgress * 0.3,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(logoRef.current, {
-                width: 200 - doorProgress * 80,
-                height: 200 - doorProgress * 80,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(contentOverlayRef.current, {
-                scale: 1 + doorProgress * 0.15,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-            
-            gsap.to([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
-                opacity: doorProgress,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-
-            // 当门完全打开时，等待一小段时间后允许滚动到下一个section
-            if (doorProgress >= 0.99 && !doorIsOpen) {
-                clearTimeout(wheelTimeout);
-                wheelTimeout = setTimeout(() => {
-                    doorIsOpen = true;
-                    const firstSection = sceneRef.current?.closest('.snap-section');
-                    if (firstSection) {
-                        firstSection.removeEventListener('wheel', handleWheel);
-                    }
-                    // 触发滚动到下一个section
-                    const aboutSection = document.querySelector('.about-section');
-                    if (aboutSection) {
-                        aboutSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 300);
-            }
-        };
-
-        const firstSection = sceneRef.current.closest('.snap-section');
-        if (firstSection) {
-            firstSection.addEventListener('wheel', handleWheel, { passive: false });
-        }
+        // 门打开动画
+        tl.to(door2Ref.current, {
+            x: '-100%',
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.inOut'
+        }, 0)
+        .to(door3Ref.current, {
+            x: '100%',
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.inOut'
+        }, 0)
+        .to(door1Ref.current, {
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.inOut'
+        }, 0)
+        .to(door4Ref.current, {
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.inOut'
+        }, 0)
+        
+        // 背景内容显示并放大
+        .to(backgroundRef.current, {
+            opacity: 1,
+            scale: 1.4,
+            duration: 1.5,
+            ease: 'power2.out'
+        }, 0)
+        .to(restaurantImageRef.current, {
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.out'
+        }, 0)
+        
+        // Logo缩小
+        .to(logoRef.current, {
+            width: 120,
+            height: 120,
+            duration: 1.5,
+            ease: 'power2.out'
+        }, 0)
+        
+        // 整体内容放大
+        .to(contentOverlayRef.current, {
+            scale: 1.15,
+            duration: 1.5,
+            ease: 'power2.out'
+        }, 0.2)
+        
+        // 标题和副标题同时渐显
+        .to([titleRef.current, subtitleRef1.current, subtitleRef2.current], {
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out'
+        }, 0.3);
 
         // 鼠标视差效果
         const handleMouseMove = (e) => {
@@ -160,10 +124,7 @@ const HeroSection = () => {
 
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
-            const section = document.querySelector('.scroll-container');
-            if (section) {
-                section.removeEventListener('wheel', handleWheel);
-            }
+            tl.kill(); // 清理时间线
         };
     }, []);
 
@@ -171,7 +132,7 @@ const HeroSection = () => {
         <div className="snap-section relative scroll-container">
             <div className="h-screen fixed-fullscreen overflow-hidden z-overlay" ref={sceneRef}>
                 {/* 背景内容 */}
-                <div className="hero-background absolute top-0 left-0 w-full h-full flex-center opacity-0 scale-100" ref={backgroundRef}>
+                <div className="hero-background absolute top-0 left-0 w-full h-full flex-center opacity-50 scale-100" ref={backgroundRef}>
                     <div className="hero-restaurant-image w-full h-full brightness-60 scale-100" ref={restaurantImageRef}>
                         <Image 
                             src={IMAGES.tokyoRestaurant} 
