@@ -16,17 +16,33 @@ const MenuSelectionSection = () => {
     const menuContainerRef = useRef(null);
 
     useEffect(() => {
-        gsap.to(menuContainerRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.menu-selection-section',
-                start: 'top 60%',
-                toggleActions: 'play none none none'
+        // 创建Intersection Observer来检测section是否进入视口
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        gsap.to(menuContainerRef.current, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power3.out'
+                        });
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        const section = document.querySelector('.menu-selection-section');
+        if (section) {
+            observer.observe(section);
+        }
+
+        return () => {
+            if (section) {
+                observer.unobserve(section);
             }
-        });
+        };
     }, []);
 
     return (

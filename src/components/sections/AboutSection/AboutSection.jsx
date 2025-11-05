@@ -15,15 +15,32 @@ const AboutSection = () => {
     const aboutContainerRef = useRef(null);
 
     useEffect(() => {
-        gsap.to(aboutContainerRef.current, {
-            opacity: 1,
-            duration: 0.5,
-            scrollTrigger: {
-                trigger: '.about-section',
-                start: 'top 60%',
-                toggleActions: 'play none none none'
+        // 创建Intersection Observer来检测section是否进入视口
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        gsap.to(aboutContainerRef.current, {
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: 'power3.out'
+                        });
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        const section = document.querySelector('.about-section');
+        if (section) {
+            observer.observe(section);
+        }
+
+        return () => {
+            if (section) {
+                observer.unobserve(section);
             }
-        });
+        };
     }, []);
 
     return (
