@@ -32,15 +32,23 @@ body {
     rgb(var(--background-start-rgb));
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* 滚动捕捉样式 */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
   height: 100vh;
+  position: relative;
 }
 
 /* 自定义样式 */

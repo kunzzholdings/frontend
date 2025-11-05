@@ -130,7 +130,7 @@ const HeroSection = () => {
 
     return (
         <div className="snap-section relative scroll-container">
-            <div className="h-screen fixed-fullscreen overflow-hidden z-overlay" ref={sceneRef}>
+            <div className="h-screen absolute top-0 left-0 w-full overflow-hidden z-overlay" ref={sceneRef}>
                 {/* 背景内容 */}
                 <div className="hero-background absolute top-0 left-0 w-full h-full flex-center opacity-50 scale-100" ref={backgroundRef}>
                     <div className="hero-restaurant-image w-full h-full brightness-60 scale-100" ref={restaurantImageRef}>
