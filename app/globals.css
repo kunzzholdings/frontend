@@ -35,38 +35,28 @@ body {
   overflow: auto;
 }
 
-/* 滚动捕捉样式 */
+/* 滚动容器样式 - 移除CSS scroll-snap，完全由JS控制 */
 .snap-container {
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   
   /* 隐藏滚动条但保持滚动功能 */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  
+  /* 移除scroll-behavior让GSAP完全控制 */
 }
 
 .snap-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* 平滑滚动过渡 */
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .snap-container {
-    scroll-behavior: smooth;
-  }
-}
-
 .snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   min-height: 100vh;
   height: 100vh;
   position: relative;
+  /* 移除scroll-snap相关属性，让滚动更流畅 */
 }
 
 /* 自定义样式 */

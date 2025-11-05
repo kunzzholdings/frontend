@@ -2,13 +2,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '@/styles/animations.css';
 import '@/styles/layout.css';
 import '@/styles/theme.css';
 import './MapSection.css';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const MapSection = () => {
     const titleRef = useRef(null);

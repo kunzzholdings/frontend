@@ -2,14 +2,11 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { IMAGES } from '../../../config/images';
 import '@/styles/animations.css';
 import '@/styles/layout.css';
 import '@/styles/theme.css';
 import './AboutSection.css';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
     const aboutContainerRef = useRef(null);

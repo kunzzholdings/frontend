@@ -3,14 +3,11 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { IMAGES } from '../../../config/images';
 import '@/styles/animations.css';
 import '@/styles/layout.css';
 import '@/styles/theme.css';
 import './MenuSelectionSection.css';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const MenuSelectionSection = () => {
     const menuContainerRef = useRef(null);
