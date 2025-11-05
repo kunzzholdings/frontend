@@ -67,7 +67,7 @@ const MapSection = () => {
 
     return (
         <div 
-            className="map-section"
+            className="map-section snap-section"
             style={{ 
                 backgroundImage: 'url(/assets/images/address.webp)'
             }}

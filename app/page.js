@@ -7,7 +7,7 @@ import MapSection from '../src/components/sections/MapSection';
 
 export default function Home() {
   return (
-    <div>
+    <div className="snap-y snap-mandatory overflow-y-scroll h-screen">
       <HeroSection />
       <AboutSection />
       <ValuesSection />

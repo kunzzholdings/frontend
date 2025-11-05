@@ -30,7 +30,7 @@ const MenuSelectionSection = () => {
     }, []);
 
     return (
-        <div className="menu-selection-section relative min-h-screen menu-background flex-center overflow-hidden py-16 px-5 font-besley z-base" 
+        <div className="menu-selection-section snap-section relative menu-background flex-center overflow-hidden py-16 px-5 font-besley z-base" 
              style={{backgroundImage: `url('/assets/images/menubg.webp')`}} id="menu-selection">
             
             <div className="menu-container flex gap-16 max-w-6xl w-full opacity-0 translate-y-12 relative z-overlay" ref={menuContainerRef}>

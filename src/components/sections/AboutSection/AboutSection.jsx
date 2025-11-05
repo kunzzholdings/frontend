@@ -27,7 +27,7 @@ const AboutSection = () => {
     }, []);
 
     return (
-        <div className="about-section relative min-h-screen overflow-hidden z-base about-background"
+        <div className="about-section snap-section relative overflow-hidden z-base about-background"
              style={{backgroundImage: `url('/assets/images/chef.webp')`}}>
             <div className="w-full h-screen opacity-0" ref={aboutContainerRef}>
                 {/* 内容区域 - 使用普通 CSS 定位到屏幕四分之三处 */}
